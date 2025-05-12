@@ -1,0 +1,16 @@
+# Dependencias
+node_modules/
+
+# Archivos de entorno (variables sensibles)
+.env
+.env.local
+
+# Logs y archivos de depuración
+*.log
+npm-debug.log*
+
+# Carpetas de compilación y caché
+dist/
+build/
+.cache/
+.coverage/

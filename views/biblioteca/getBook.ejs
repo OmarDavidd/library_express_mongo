@@ -1,0 +1,51 @@
+<div class="bg-white border border-gray-200 rounded-lg shadow-sm hover:bg-gray-50 p-6">
+  <div class="flex justify-between items-center mb-4">
+    <h3 class="text-xl font-bold text-gray-800">
+      Detalles del Libro
+    </h3>
+    <a href="/biblioteca" class="text-sm inline-block mb-3 text-gray-500 hover:text-gray-700">
+      ← Volver atrás
+    </a>
+  </div>
+  <div class="flex flex-col space-y-4">
+    <p class="text-gray-600">
+      <strong>Título:</strong>
+      <%= book.title %>
+    </p>
+    <p class="text-gray-600">
+      <strong>Autor:</strong>
+      <%= book.author %>
+    </p>
+    <p class="text-gray-600">
+      <strong>Año de publicación:</strong>
+      <%= book.publicationYear %>
+    </p>
+    <p class="text-gray-600">
+      <strong>Género:</strong>
+      <%= book.genre %>
+    </p>
+    <p class="text-gray-600">
+      <strong>Número de edición:</strong>
+      <%= book.editionNumber %>
+    </p>
+
+    <div class="flex space-x-3 mt-2">
+      <a href="/biblioteca/update/book/<%= book._id %>"
+        class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors">
+        Editar
+      </a>
+      <form action="/biblioteca/book/<%= book._id %>?_method=DELETE" method="POST" class="inline">
+        <button type="submit" onclick="return confirmarEliminacion()"
+          class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition-colors">
+          Eliminar
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  function confirmarEliminacion() {
+    return confirm('¿Estás seguro de que deseas eliminar este libro? Esta acción no se puede deshacer.');
+  }
+</script>

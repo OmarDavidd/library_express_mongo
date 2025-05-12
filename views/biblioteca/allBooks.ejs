@@ -1,0 +1,73 @@
+<div class="container mx-auto px-4 py-8">
+  <div class="flex justify-between items-center mb-8">
+    <h1 class="text-3xl font-bold text-gray-800"><%= title %></h1>
+    <div class="flex space-x-4">
+      <form action="/biblioteca/year" method="GET" class="flex">
+        <input
+          type="number"
+          name="year"
+          placeholder="Año"
+          class="border border-gray-300 rounded-l-md px-3 py-2 w-30"
+        >
+        <button type="submit" class="bg-indigo-600 text-white px-3 py-2 rounded-r-md">
+          Filtrar
+        </button>
+      </form>
+      <form action="/biblioteca/edition" method="GET" class="flex">
+        <input
+          type="number"
+          name="edition"
+          placeholder="Edición"
+          class="border border-gray-300 rounded-l-md px-3 py-2 w-30"
+        >
+        <button type="submit" class="bg-indigo-600 text-white px-3 py-2 rounded-r-md">
+          Filtrar
+        </button>
+      </form>
+      <form action="/biblioteca" method="GET" class="flex">
+        <button type="submit" class="bg-red-500 hover:bg-red-700 text-white px-4 py-2 rounded-md">
+          Reset filters
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <div class="overflow-x-auto shadow-md rounded-lg">
+    <table class="w-full text-sm text-left text-gray-700">
+      <thead class="text-xs uppercase bg-gray-100">
+        <tr>
+          <th class="px-6 py-3">Título</th>
+          <th class="px-6 py-3">Autor</th>
+          <th class="px-6 py-3">Año</th>
+          <th class="px-6 py-3">Género</th>
+          <th class="px-6 py-3">Edición</th>
+          <th class="px-6 py-3">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% books.forEach(book => { %>
+          <tr class="bg-white border-b">
+            <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+              <%= book.title %>
+            </td>
+            <td class="px-6 py-4">
+              <%= book.author %>
+            </td>
+            <td class="px-6 py-4">
+              <%= book.publicationYear %>
+            </td>
+            <td class="px-6 py-4">
+              <%= book.genre %>
+            </td>
+            <td class="px-6 py-4">
+              <%= book.editionNumber %>
+            </td>
+            <td class="px-6 py-4 space-x-2">
+              <a href="/biblioteca/book/<%= book.id %>" class="text-blue-600 hover:underline">Ver</a>
+            </td>
+          </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  </div>
+</div>
